@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Second Act Scorecard&#8482; | GenXplore | V12</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── PALETTE ─────────────────────────────────────────────── */
+  :root {
+    --bg:          #F7F4EE;
+    --surface:     #FDFBF7;
+    --surface-2:   #F1EDE3;
+    --border:      #E2DAC8;
+    --border-light:#EDE7D9;
+    --text-primary:#2A2520;
+    --text-mid:    #5C5449;
+    --text-muted:  #9A9186;
+    --text-hint:   #B8B0A4;
+    --accent:      #4A3F35;
+    --accent-warm: #7C6B5A;
+    --amber:       #C09050;
+    --amber-bg:    #FBF5E8;
+    --amber-border:#D4A84B;
+    --red:         #8C3A2E;
+    --red-soft:    #C8604E;
+    --navy:        #2C3E50;
+    --navy-bg:     #EBF0F5;
+    --navy-border: #5B7A9A;
+    --green-bg:    #EEF4EE;
+    --green-border:#7AAB7A;
+  }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.25;
+  }
+
+  .page {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 56px 28px 100px;
+  }
+
+  /* ── MICRO LOGO HEADER ───────────────────────────────────── */
+  .micro-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .micro-logo img {
+    height: 28px;
+    width: auto;
+    opacity: 0.72;
+    filter: sepia(20%) contrast(0.9);
+  }
+
+  /* ── FORM HEADER ─────────────────────────────────────────── */
+  .page-title {
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+    line-height: 1.25;
+  }
+  .page-title em {
+    font-style: normal;
+    color: var(--accent-warm);
+  }
+  .page-meta {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: var(--text-hint);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .page-meta span { margin-right: 16px; }
+ .page-intro {
+  font-size: 15px;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+  line-height: 1.3;
+  padding-bottom: 0;
+  border-bottom: none;
+  }
+  .page-intro strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ── DIMENSION ───────────────────────────────────────────── */
+.dimension {
+  border: 1px solid rgba(184, 176, 164, 0.25);
+  border-radius: 30px;
+  padding: 0 25px 20px 50px;
+  margin-bottom: 28px;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.dimension-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+  background-color: rgba(209, 212, 197, 0.25);
+  padding: 20px 25px 22px 50px;
+  margin-left: -50px;
+  margin-right: -25px;
+  border-radius: 30px 30px 0 0;
+}
+.dimension-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #7A6B5A;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-left: 2px solid rgba(122, 107, 90, 0.45);
+  padding-left: 12px;
+  margin-left: -14px;
+  line-height: 1.1;
+}
+
+.dimension-focus {
+  font-size: 16px;
+  color: #A89888;
+  margin: 0;
+  line-height: 1.3;
+  font-style: italic;
+  font-weight: 400;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.new-tag {
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--amber);
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-border);
+  padding: 1px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+.dimension-divider { display: none; }
+
+  /* ── QUESTIONS ───────────────────────────────────────────── */
+  .question { margin-bottom: 5px; }
+  .question-num {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-hint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0px;
+  }
+  .question-text {
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  /* ── RADIO GROUP ─────────────────────────────────────────── */
+  .radio-group { display: flex; gap: 0; width: 100%; }
+  .radio-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    padding: 4px 2px;
+  }
+  .radio-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    flex-shrink: 0;
+  }
+  .radio-option input[type="radio"]:checked {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: inset 0 0 0 4px var(--surface);
+  }
+  .radio-option:hover input[type="radio"]:not(:checked) {
+    border-color: var(--accent-warm);
+  }
+  .radio-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 10px;
+    color: #A89888 ;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 60px;
+  }
+  .radio-option input[type="radio"]:checked + .radio-label {
+    color: var(--text-mid);
+    font-weight: 600;
+  }
+
+  /* ── SUBMIT ──────────────────────────────────────────────── */
+.submit-area {
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+  .submit-btn {
+    background: var(--accent);
+    color: #F7F4EE;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 13px 36px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .submit-btn:hover { background: var(--text-primary); }
+  .error-msg {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--red);
+    font-size: 13px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* ── RESULTS ─────────────────────────────────────────────── */
+  #results { display: none; }
+
+  /* Disclaimer */
+  .results-disclaimer {
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin-bottom: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.2;
+  }
+  .results-disclaimer strong { color: var(--text-primary); }
+  .results-disclaimer a {
+    color: var(--amber);
+    text-decoration: underline;
+    cursor: pointer;
+    text-underline-offset: 2px;
+  }
+
+  /* Score block */
+  .results-score-block {
+    margin-bottom: 44px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .results-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-hint);
+    margin-bottom: 10px;
+  }
+  .results-score-num {
+    font-size: 72px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .results-tier {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 24px;
+  }
+  .results-tier strong { color: var(--text-primary); font-weight: 600; }
+
+  .gap-row { display: flex; gap: 44px; margin-top: 20px; }
+  .gap-value {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .gap-key {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    color: var(--text-hint);
+    margin-top: 3px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Dimension bars */
+  .dim-bars { margin-bottom: 44px; }
+  .dim-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 13px;
+  }
+  .dim-bar-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-mid);
+    width: 100px;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+  }
+  .bottleneck-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red-soft);
+    margin-right: 5px;
+    position: relative;
+    top: -1px;
+  }
+  .dim-bar-track {
+    flex: 1;
+    height: 5px;
+    background: var(--surface-2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .dim-bar-fill {
+    height: 100%;
+    background: var(--accent-warm);
+    border-radius: 3px;
+    transition: width 0.9s cubic-bezier(.22,.61,.36,1);
+    width: 0;
+  }
+  .dim-bar-fill.bottleneck { background: var(--red-soft); }
+  .dim-bar-pct {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: var(--text-hint);
+    width: 34px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* Persona block */
+  .persona-block {
+    border-top: 1px solid var(--border);
+    padding-top: 36px;
+    margin-bottom: 0;
+  }
+  .persona-eyebrow {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-hint);
+    margin-bottom: 8px;
+  }
+  .persona-name {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .persona-hypothesis {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: var(--text-hint);
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  .persona-profile {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .persona-diagnosis {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-style: italic;
+    border-left: 2px solid var(--border);
+    padding-left: 18px;
+    margin-bottom: 20px;
+    line-height: 1.25;
+  }
+  .persona-next-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-hint);
+    margin-bottom: 6px;
+  }
+  .persona-next-text {
+    font-size: 15px;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .persona-thinking {
+    font-size: 14px;
+    color: var(--text-hint);
+    font-style: italic;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* Transformation block */
+  .transformation-block {
+    border-top: 1px solid var(--border);
+    padding-top: 36px;
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+  .transformation-heading {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-hint);
+    margin-bottom: 16px;
+  }
+  .transformation-gap-line {
+    font-size: 15px;
+    color: var(--text-mid);
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+  .transformation-loop {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    line-height: 1.05;
+    font-style: italic;
+  }
+  .transformation-break {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin: 20px 0 16px;
+    font-style: italic;
+  }
+  .transformation-lines {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+  .transformation-persona-shift {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-muted);
+    border-left: 2px solid var(--border-light);
+    padding-left: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  /* First move block */
+  .first-move-block {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    margin-bottom: 40px;
+  }
+  .first-move-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-hint);
+    margin-bottom: 10px;
+  }
+  .first-move-text {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  /* CTA block */
+  .cta-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+  .cta-block p {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 16px;
+    line-height: 1.25;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  .mid-retake {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: var(--text-hint);
+    margin-top: 12px;
+  }
+  .mid-retake a {
+    color: var(--text-mid);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Share block */
+  .share-block {
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    margin-bottom: 40px;
+  }
+  .share-block p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-bottom: 8px;
+  }
+  .share-url {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .retake-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    padding: 10px 26px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .retake-btn:hover {
+    background: var(--accent);
+    color: var(--surface);
+    border-color: var(--accent);
+  }
+
+  /* Footer */
+  .page-footer {
+    border-top: 1px solid var(--border-light);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-logo img {
+    height: 20px;
+    width: auto;
+    opacity: 0.4;
+    filter: sepia(20%) contrast(0.85);
+  }
+  .footer-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    color: var(--text-hint);
+    line-height: 1.25;
+    text-align: right;
+  }
+
+  /* Inline note boxes (co-limiting flag) */
+  .note-amber {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--amber-bg);
+    border-left: 2px solid var(--amber-border);
+    border-radius: 0 3px 3px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.2;
+  }
+  .note-amber strong { color: var(--text-primary); }
+  .note-navy {
+    margin-top: 16px;
+    padding: 13px 16px;
+    background: var(--navy-bg);
+    border-left: 2px solid var(--navy-border);
+    border-radius: 0 3px 3px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.25;
+  }
+  .note-navy strong { color: var(--navy); }
+  .note-navy a {
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* Input field shared style */
+  .ml-input {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .ml-input:focus { border-color: var(--accent-warm); }
+  .ml-label {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-hint);
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 480px) {
+    .page { padding: 36px 18px 80px; }
+    .results-score-num { font-size: 56px; }
+    .persona-name { font-size: 22px; }
+    .radio-label { font-size: 9px; max-width: 48px; }
+    .gap-row { gap: 24px; }
+    .footer-text { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SCORECARD FORM -->
+  <div id="formView">
+
+    <!-- Discreet logo header -->
+    <div class="micro-logo">
+      <img src="https://i.imgur.com/VlxwtOp.png" alt="Second Act Scorecard" style="height: 28px; width: auto;">
+    </div>
+
+    <h1 class="page-title">The Second Act Scorecard<sup style="font-size:0.55em;vertical-align:super;">&#8482;</sup></h1>
+    <div class="page-meta">
+      <span>18 QUESTIONS</span>
+      <span>|</span>
+      <span>6 DIMENSIONS</span>
+      <span>|</span>
+      <span>1 EPIC SECOND ACT</span>
+    </div>
+    <p class="page-intro">
+      Rate each statement based on what is true for you <strong>right now</strong>.
+      Your first instinct is usually the honest one.
+    </p>
+
+    <div id="questionsContainer"></div>
+
+    <div class="submit-area">
+      <button class="submit-btn" onclick="calculateResults()">Calculate My Score</button>
+      <p class="error-msg" id="errorMsg">Please answer all 18 questions before continuing.</p>
+    </div>
+
+  </div><!-- /#formView -->
+
+  <!-- RESULTS VIEW -->
+  <div id="results">
+
+    <!-- FIX 4: Disclaimer — removed namedrop, softened coaching reference -->
+    <div class="results-disclaimer">
+      <strong>Before your result:</strong> This is a self-reflection tool, not a diagnosis. Your persona is a hypothesis — test it, don't accept it. Additional coaching may help validate and deepen what you find here. The Scorecard is the front door, not the full picture.
+      <a onclick="document.getElementById('fullDisclaimer').style.display=document.getElementById('fullDisclaimer').style.display==='none'?'block':'none'">Full disclaimer</a>
+      <div id="fullDisclaimer" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid var(--amber-border);">
+        This instrument is based entirely on your self-report at a single point in time. A three-question dimension cannot fully capture your financial situation, relational context, or psychological readiness. If your situation is complex, urgent, or emotionally charged, direct coaching is the right path. If something feels off about your result, that gap is often more revealing than the result itself.
+      </div>
+    </div>
+
+    <!-- Score -->
+    <div class="results-score-block">
+      <div class="results-label">Your Second Act Score</div>
+      <div class="results-score-num" id="scoreNum">--</div>
+      <!-- FIX 5: Tier label now shows only the descriptive name, not "Tier N —" -->
+      <div class="results-tier" id="tierLine"></div>
+      <div style="height:1px;background:var(--border-light);margin:20px 0;"></div>
+      <!-- FIX 7: Removed ™ from "Second Act Gap" -->
+      <div class="results-label" style="margin-bottom:14px;">Second Act Gap</div>
+      <div class="gap-row">
+        <div><div class="gap-value" id="gapCurrent">--</div><div class="gap-key">Current Score</div></div>
+        <div><div class="gap-value" id="gapPotential">--</div><div class="gap-key">Potential Score</div></div>
+        <div><div class="gap-value" id="gapDiff" style="color:var(--red-soft);">--</div><div class="gap-key">Your Gap</div></div>
+      </div>
+    </div>
+
+    <!-- Dimension bars -->
+    <div class="dim-bars" id="dimBars"></div>
+
+    <!-- Persona -->
+    <div class="persona-block" id="personaBlock"></div>
+
+    <!-- Transformation -->
+    <div class="transformation-block" id="transformationBlock"></div>
+
+    <!-- First Move -->
+    <div class="first-move-block" id="firstMoveBlock"></div>
+
+    <!-- CTA — MailerLite API (V12) -->
+    <!-- FIX 2: Added First Name field; FIX 6: Full CTA block reset on retake -->
+    <div class="cta-block" style="padding: 20px 24px;" id="ctaBlock">
+      <p style="margin-bottom: 18px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; color: var(--text-mid); line-height: 1.2;">
+        <strong style="color: var(--text-primary);">This is just the summary of your Second Act Persona.</strong><br>
+        The full analysis, your track, and what comes next — drop your details below.
+      </p>
+
+      <!-- First Name input -->
+      <div style="margin-bottom: 12px;" id="ml-firstname-wrap">
+        <label for="ml-firstname-input" class="ml-label">
+          First Name <span style="color: var(--amber);">*</span>
+        </label>
+        <input type="text" id="ml-firstname-input" placeholder="" autocomplete="given-name" class="ml-input"
+               onkeydown="if(event.key==='Enter'){event.preventDefault();document.getElementById('ml-email-input').focus();}">
+      </div>
+
+      <!-- Email input -->
+      <div style="margin-bottom: 16px;" id="ml-email-wrap">
+        <label for="ml-email-input" class="ml-label">
+          Email Address <span style="color: var(--amber);">*</span>
+        </label>
+        <input type="email" id="ml-email-input" placeholder="" autocomplete="email" class="ml-input"
+               onkeydown="if(event.key==='Enter'){event.preventDefault();submitToMailerLite();}">
+      </div>
+
+      <!-- Submit row -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;" id="ml-submit-row">
+        <button id="ml-submit-btn" onclick="submitToMailerLite()"
+                style="background: var(--accent); color: #F7F4EE; border: none; padding: 12px 28px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 3px; cursor: pointer; transition: background 0.15s;"
+                onmouseover="this.style.background='var(--text-primary)'"
+                onmouseout="this.style.background='var(--accent)'">
+          Send Me The Full Analysis &rarr;
+        </button>
+        <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 11px; color: var(--text-hint);">No spam, unsubscribe anytime.</span>
+      </div>
+
+      <!-- Status message -->
+      <div id="ml-status" style="margin-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; display: none;"></div>
+
+      <p class="mid-retake" style="margin-top: 18px;">
+        Not feeling this result? <a onclick="retake()">Take the Scorecard again</a>
+      </p>
+    </div>
+    <!-- END CTA BLOCK -->
+
+    <!-- Share -->
+    <div class="share-block">
+      <p>Know someone navigating their own Second Act? Challenge them.</p>
+      <div class="share-url">GenXplore.com</div>
+    </div>
+
+  </div><!-- /#results -->
+
+  <!-- Footer with logo (discreet) -->
+  <div class="page-footer">
+    <div class="footer-logo">
+      <img src="https://i.imgur.com/VlxwtOp.png" alt="Second Act Scorecard" style="height: 20px; width: auto;">
+    </div>
+    <div class="footer-text">
+      <div>A GenXplore&#8482; instrument by Jasper Evangelista &nbsp;&middot;&nbsp; V12</div>
+      <div>For Gen X designing what comes next &nbsp;&middot;&nbsp; &copy; 2026 JasperEvangelista.com</div>
+    </div>
+  </div>
+
+</div><!-- /.page -->
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+const DIMENSIONS = [
+  { id:"clarity", label:"Clarity", focus:"Do I know what I actually want next?", questions:[
+    "I can describe what I want my next chapter to look like -- not in vague terms, but with enough detail that someone else would understand it.",
+    "I know what I want more of and less of in my life right now.",
+    "The decisions I am making this month are intentional moves toward something, not just reactions to stress or circumstance.",
+  ]},
+  { id:"capacity", label:"Capacity", focus:"Do I have the bandwidth to change anything?", questions:[
+    "I have the physical energy to pursue something new.",
+    "My schedule has real space for meaningful personal change.",
+    "I can stay focused on personal growth without feeling overwhelmed.",
+  ]},
+  { id:"capital", label:"Capital", focus:"Can I afford to make a move?", questions:[
+    "I have financial breathing room to make a change if I wanted to.",
+    "I can invest time, money, or effort in myself without major sacrifice.",
+    "I feel secure enough to take a calculated risk on my future.",
+  ]},
+  { id:"courage", label:"Courage", focus:"Am I willing to disrupt my current life?", questions:[
+    "I am open to redefining who I am at this stage of life.",
+    "I am willing to step outside my comfort zone for the right opportunity.",
+    "I believe it is not too late to reinvent myself.",
+  ]},
+  { id:"confidence", label:"Confidence", focus:"Do I believe my skills and experience are genuinely valuable?", questions:[
+    "I believe my experience and skills are genuinely valuable in what comes next.",
+    "I can speak about my abilities and achievements without downplaying them.",
+    "I trust my own judgment when others question my direction.",
+  ]},
+  { id:"connection", label:"Connection", focus:"Do I have the right people around me?", questions:[
+    "I have people around me who genuinely support my growth.",
+    "I can openly discuss my life transitions with people I trust.",
+    "I am connected to others who are also moving forward in their lives.",
+  ]},
+];
+
+const LABELS = ["Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree"];
+
+const PERSONAS = {
+  clarity:{
+    name:"The Drifting Achiever", bottleneck:"CLARITY",
+    profile:"Successful on paper. Internally unclear. You have built a life -- but not necessarily one you chose intentionally.",
+    diagnosis:"You are not failing. You are succeeding at the wrong thing. Your next move is not bigger -- it is more intentional.",
+    next:"Your next step is not a leap. It is a pause long enough to decide what you actually want.",
+    thinking:"\"I do not want to waste the next ten years like the last ten.\"",
+    shift:"You stop succeeding at the wrong thing. You pick one direction and you go.",
+    steps:[
+      {range:"0-39%", text:"Start with stability. Focus on one dimension at a time. Begin with Capacity -- without energy, nothing else moves."},
+      {range:"40-59%", text:"Address your bottleneck. Name it, face it, take one action this week toward unlocking it."},
+      {range:"60-79%", text:"Build structure around your momentum. You are moving. Now you need a system."},
+      {range:"80-100%", text:"Execute and scale. Stop exploring and start constructing."},
+    ]
+  },
+  capacity:{
+    name:"The Caged Builder", bottleneck:"CAPACITY",
+    profile:"Knows what they want. Feels trapped by time, energy, or responsibilities. Not lost -- constrained.",
+    diagnosis:"You are not confused. You are overloaded. The job, the bills, the responsibilities are real. But so is the cost of staying.",
+    next:"Reclaim capacity. One hour. One boundary. One decision that is for you.",
+    thinking:"\"I could do so much more -- if I just had space.\"",
+    shift:"You stop waiting for space to appear. You build the space.",
+    steps:[
+      {range:"0-39%", text:"Start with one boundary. Protect a single hour per week for yourself. Non-negotiable. Follow the free content at GenXplore.com."},
+      {range:"40-59%", text:"Map your energy drains. The Battery Dashboard is your first tool. Name your bottleneck this week and take one action toward unlocking it."},
+      {range:"60-79%", text:"Design the revenue path that buys back your time. Command Burn Rate is the framework."},
+      {range:"80-100%", text:"Execute the Scaled Sprint. Build the automated path and launch. Stop exploring and start constructing."},
+    ]
+  },
+  capital:{
+    name:"The Caged Builder", bottleneck:"CAPITAL",
+    profile:"Knows what they want. Feels constrained by financial reality. Not directionless -- resource-limited.",
+    diagnosis:"You are not confused. The bills and responsibilities are real. But so is the cost of staying.",
+    next:"Reclaim capacity. One hour. One boundary. One decision that is for you.",
+    thinking:"\"I could do so much more -- if I just had the resources.\"",
+    shift:"You stop waiting for perfect conditions. You calculate the floor and build from there.",
+    steps:[
+      {range:"0-39%", text:"Start with a resource audit. Identify what you actually need versus what you assume you need. Follow the free content at GenXplore.com."},
+      {range:"40-59%", text:"Calculate the Command Burn Rate -- the minimum you need to make a move safely. Name your bottleneck and act this week."},
+      {range:"60-79%", text:"Design the Scaled Sprint path that generates income while building the Second Act."},
+      {range:"80-100%", text:"Execute. The conditions never arrive on their own -- you create them. Stop exploring and start constructing."},
+    ]
+  },
+  courage:{
+    name:"The Reluctant Rewriter", bottleneck:"COURAGE",
+    profile:"Has ideas. Has plans. Overthinks and does not execute. Ready but does not fully trust the timing.",
+    diagnosis:"You have the ideas. You might even have the plan. Something keeps you circling instead of committing. It is self-protection.",
+    next:"One small irreversible action. Not the whole leap. Just the first inch.",
+    thinking:"\"What if I am too late? What if I fail?\"",
+    shift:"You stop circling. You take the first inch.",
+    steps:[
+      {range:"0-39%", text:"Name the First Act Script that is generating the fear. That is your Reveal work. Start with stability and follow the free content."},
+      {range:"40-59%", text:"Pick the Beginner's Bet -- one low-stakes project. Start this weekend. Address your bottleneck and take one action this week."},
+      {range:"60-79%", text:"Do the Worst-Case Map. Define the actual risk of failure versus the risk of staying. Build structure around your momentum."},
+      {range:"80-100%", text:"Find your Courage Anchor -- someone who has already made the leap. Then make your own. Execute and scale."},
+    ]
+  },
+  confidence:{
+    name:"The Stalled Strategist", bottleneck:"CONFIDENCE", isNew:true,
+    profile:"Has the strategy. Has the skills. Cannot claim the authority. Competent in every room they enter -- and still waits for someone to tell them they belong there.",
+    diagnosis:"You are not lost and you are not stuck. You are underselling. The gap is not between who you are and who you need to be. It is between who you are and who you are willing to say you are.",
+    next:"Write the Authority Claim. One sentence. Present tense. No hedging. \"I am the person who ___\". Say it out loud before you type it anywhere.",
+    thinking:"\"I have so much experience -- why does it still feel like I am not qualified enough?\"",
+    shift:"You stop hiding behind preparation. You show up with authority.",
+    steps:[
+      {range:"0-39%", text:"Build the evidence base first. Write your Soul CV -- every hard thing you have survived and shipped. Start with stability and free content."},
+      {range:"40-59%", text:"The bottleneck is belief, not proof. Name your authority publicly in one place this week."},
+      {range:"60-79%", text:"You are ready to claim it. Build structure around your momentum."},
+      {range:"80-100%", text:"Stop ghost marketing. Hard pivot. Change the LinkedIn header. Lead with what you are, not what you have done. Execute and scale."},
+    ]
+  },
+  connection:{
+    name:"The Rising Reinventor", bottleneck:"CONNECTION",
+    profile:"Already taking steps. Lacks the community, mentorship, or peer environment to sustain momentum.",
+    diagnosis:"You have started moving -- that is more than most. But momentum without structure eventually burns out.",
+    next:"Find your crew. People who are building, not just talking about it.",
+    thinking:"\"I am doing this alone and it is getting harder.\"",
+    shift:"You stop building alone. You find the room.",
+    steps:[
+      {range:"0-39%", text:"Start your Circle Audit. Separate your Comforters (stagnant) from your Nudgers (growth). Follow the free content at GenXplore.com."},
+      {range:"40-59%", text:"Identify a tribe where your current skills are rare and highly valued. That is your Value Pivot. Address your bottleneck this week."},
+      {range:"60-79%", text:"Find the room where your Power Circle is already building. Build structure around your momentum."},
+      {range:"80-100%", text:"Host the Stay Awhile Session -- a micro-event for your new circle. Become the connector. Execute and scale."},
+    ]
+  },
+  centered:{
+    name:"The Activated Architect", bottleneck:"CENTERED",
+    profile:"Clear, capable, resourced, brave, confident, and connected. Needs an execution framework and scale.",
+    diagnosis:"You are not figuring it out -- you are building it. This is execution territory.",
+    next:"Commit to a structured build. Not more exploration -- construction.",
+    thinking:"\"I am ready. What is the system?\"",
+    shift:"You stop thinking about legacy. You build it.",
+    steps:[
+      {range:"0-39%", text:"Identify your Legacy -- which skills are giftable to the next generation. Start with stability and follow the free content."},
+      {range:"40-59%", text:"Design the Generativity Plan -- a project that lives beyond your own effort. Address your bottleneck this week."},
+      {range:"60-79%", text:"Protect 10 hours per week for legacy work. This is the Holistic Balance commitment. Build structure around your Generativity Plan."},
+      {range:"80-100%", text:"Execute the Legacy Drop. Release the Generativity Project. Open the mentorship loop. Execute and scale."},
+    ]
+  },
+};
+
+// FIX 5: Tier labels — descriptive only, no "Tier N" prefix shown to user
+const TIER_LABELS_DISPLAY = [
+  "Survival Mode",       // Tier 1 (0–39%)
+  "Aware but Stuck",     // Tier 2 (40–59%)
+  "Primed for Change",   // Tier 3 (60–79%)
+  "Ready to Build",      // Tier 4 (80–100%)
+];
+
+// Tier-aware transformation copy
+const TIER_TRANSFORMATION = {
+  1: {
+    intro: "Before the aspiration, the honest truth: at this score range, the priority is stability. The system ahead is designed to move you one dimension at a time, not all at once. The loop ahead is shorter than it looks.",
+    loopText: "Right now, your situation feels heavy.\nEverything pulls on you at once.\nOne dimension is the entry point.\nYou address that one.\nThen the next.\nThen the next.",
+    breakText: "That progression is the loop breaking.",
+  },
+  2: {
+    intro: "You can see the gap between where you are and where you want to be. That visibility is the beginning.",
+    loopText: "Right now, your situation feels like a loop.\nYou think.\nYou plan.\nYou hesitate.\nThen you repeat.",
+    breakText: "That loop breaks here.",
+  },
+  3: {
+    intro: "You are already moving. The question now is structure -- making sure the momentum you have built does not burn out before it compounds.",
+    loopText: "You have been building.\nBut building without structure eventually stalls.\nYou think.\nYou plan.\nYou move.\nThen you drift.",
+    breakText: "That drift ends here.",
+  },
+  4: {
+    intro: "You are not figuring it out. You are building it. This is execution territory.",
+    loopText: "You think.\nYou plan.\nYou are ready.\nYou need the system.",
+    breakText: "The system is here.",
+  },
+};
+
+const TIERS = [
+  {max:39, label:"Survival Mode"},
+  {max:59, label:"Aware but Stuck"},
+  {max:79, label:"Primed for Change"},
+  {max:100, label:"Ready to Build"},
+];
+
+const answers = {};
+
+// ── BUILD FORM ────────────────────────────────────────────────────────────────
+function buildForm() {
+  const container = document.getElementById('questionsContainer');
+  let qNum = 1;
+  DIMENSIONS.forEach(dim => {
+    const dimEl = document.createElement('div');
+    dimEl.className = 'dimension';
+    dimEl.innerHTML = `
+      <div class="dimension-inline">
+        <div class="dimension-name">${dim.label}${dim.isNew ? '<span class="new-tag">New</span>' : ''}</div>
+        <div class="dimension-focus">${dim.focus}</div>
+      </div>
+    `;
+    dim.questions.forEach((q, qi) => {
+      const key = `${dim.id}_${qi}`;
+      const qEl = document.createElement('div');
+      qEl.className = 'question';
+      qEl.id = 'q-' + key;
+      qEl.innerHTML = `
+        <div class="question-num">Q${qNum}</div>
+        <div class="question-text">${q}</div>
+        <div class="radio-group">
+          ${LABELS.map((lbl,i) => `
+            <label class="radio-option">
+              <input type="radio" name="${key}" value="${i+1}" onchange="answers['${key}']=${i+1}">
+              <span class="radio-label">${lbl}</span>
+            </label>
+          `).join('')}
+        </div>
+      `;
+      dimEl.appendChild(qEl);
+      qNum++;
+    });
+    container.appendChild(dimEl);
+  });
+}
+
+// ── CALCULATE ─────────────────────────────────────────────────────────────────
+function calculateResults() {
+  for (const dim of DIMENSIONS) {
+    for (let qi = 0; qi < 3; qi++) {
+      if (!answers[`${dim.id}_${qi}`]) {
+        document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById(`q-${dim.id}_${qi}`).scrollIntoView({behavior:'smooth',block:'center'});
+        return;
+      }
+    }
+  }
+  document.getElementById('errorMsg').style.display = 'none';
+
+  const dimScores = {};
+  DIMENSIONS.forEach(dim => {
+    dimScores[dim.id] = [0,1,2].reduce((s,qi) => s + (answers[`${dim.id}_${qi}`]||0), 0);
+  });
+
+  const totalRaw = Object.values(dimScores).reduce((a,b) => a+b, 0);
+  const pct = Math.round((totalRaw / 90) * 100);
+  const maxDim = Math.max(...Object.values(dimScores));
+  const potPct = Math.round((maxDim * 6) / 90 * 100);
+  const gap = potPct - pct;
+
+  let bottleneck = 'centered';
+  let minScore = 16;
+  DIMENSIONS.forEach(dim => {
+    if (dimScores[dim.id] < minScore) { minScore = dimScores[dim.id]; bottleneck = dim.id; }
+  });
+  const vals = Object.values(dimScores);
+  // V12: Balanced spread (all dims within 2pts) routes to clarity if <72%, else centered (Activated Architect)
+  if (Math.max(...vals) - Math.min(...vals) <= 2) {
+    bottleneck = pct >= 72 ? 'centered' : 'clarity';
+  }
+
+  // FIX 5: Determine tier — display label without "Tier N" prefix
+  const tierNum = pct <= 39 ? 1 : pct <= 59 ? 2 : pct <= 79 ? 3 : 4;
+  const stepIndex = tierNum - 1;
+  const tierLabel = TIERS[tierNum - 1].label;  // descriptive only
+
+  // V12: Co-limiting flag detection (secondary within 4 pts of primary)
+  // FIX 1: Co-limiting only fires for the secondary dim; primary persona is singular
+  let coLimitingDim = null;
+  if (bottleneck !== 'centered') {
+    let secondMin = 16;
+    let secondDimId = null;
+    DIMENSIONS.forEach(dim => {
+      if (dim.id !== bottleneck && dimScores[dim.id] < secondMin) {
+        secondMin = dimScores[dim.id];
+        secondDimId = dim.id;
+      }
+    });
+    if (secondDimId && (dimScores[bottleneck] + 4) >= dimScores[secondDimId]) {
+      coLimitingDim = secondDimId;
+    }
+  }
+
+  renderResults(pct, dimScores, bottleneck, tierLabel, potPct, gap, tierNum, stepIndex, coLimitingDim);
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  // ── V12: DATA EXPORT ──────────────────────────────────────────────────────
+  function buildRadarUrl(data, labels) {
+    const cfg = {
+      type: "radar",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: "Your Scores",
+          data: data,
+          backgroundColor: "rgba(192,144,80,0.18)",
+          borderColor: "#C09050",
+          borderWidth: 2,
+          pointBackgroundColor: "#C09050",
+          pointRadius: 3,
+        }]
+      },
+      options: {
+        scale: {
+          ticks: { beginAtZero: true, max: 100, stepSize: 20,
+                   fontColor: "#9A9186", fontSize: 10 },
+          gridLines: { color: "rgba(90,80,70,0.15)" },
+          pointLabels: { fontColor: "#5C5449", fontSize: 11 }
+        },
+        legend: { display: false }
+      }
+    };
+    return "https://quickchart.io/chart?w=340&h=280&c=" + encodeURIComponent(JSON.stringify(cfg));
+  }
+
+  const radarPcts   = DIMENSIONS.map(dim => Math.round((dimScores[dim.id] / 15) * 100));
+  const radarLabels = DIMENSIONS.map(dim => dim.label);
+  const persona     = PERSONAS[bottleneck] || PERSONAS['centered'];
+  const dimLabelsMap = { clarity:'Clarity', capacity:'Capacity', capital:'Capital',
+                         courage:'Courage', confidence:'Confidence', connection:'Connection' };
+
+  window.SA_RESULT = {
+    version:          'V12',
+    totalPct:         pct,
+    potentialPct:     potPct,
+    gap:              gap,
+    tier:             tierLabel,
+    tierNum:          tierNum,
+    stepIndex:        stepIndex,
+    bottleneck:       bottleneck,
+    personaName:      persona.name,
+    coLimitingDim:    coLimitingDim,
+    coLimitingLabel:  coLimitingDim ? (dimLabelsMap[coLimitingDim] || coLimitingDim) : null,
+    radarLabels:      radarLabels,
+    radarData:        radarPcts,
+    radarCSV:         radarPcts.join(','),
+    quickchartUrl:    buildRadarUrl(radarPcts, radarLabels),
+    clarityPct:       radarPcts[0],
+    capacityPct:      radarPcts[1],
+    capitalPct:       radarPcts[2],
+    couragePct:       radarPcts[3],
+    confidencePct:    radarPcts[4],
+    connectionPct:    radarPcts[5],
+  };
+}
+
+// ── MAILERLITE GROUP ID MAP ───────────────────────────────────────────────────
+// FIX 1: Only ONE primary persona group fires per submission.
+// Co-limiting is handled via the co-limiting-active group + colimiting field only.
+const ML_GROUPS = {
+  clarity:    '185346185629796050',  // Drifting Achiever
+  capacity:   '185346245237147048',  // Caged Builder — Capacity
+  capital:    '185346227067422014',  // Caged Builder — Capital
+  courage:    '185346320384394471',  // Reluctant Rewriter
+  connection: '185346339450652629',  // Rising Reinventor
+  confidence: '185522829354075586',  // Stalled Strategist
+  centered:   '185346298226934880',  // Activated Architect
+};
+
+// FIX 1: Persona-slug groups — only the primary bottleneck slug fires.
+// The co-limiting dim does NOT get its own slug group. It only gets the
+// co-limiting-active group + colimiting field value in the subscriber record.
+const ML_PERSONA_SLUG_GROUPS = {
+  clarity:    '185346494547625533',  // persona-clarity
+  capacity:   '185346505621636803',  // persona-capacity
+  capital:    '185346519005660328',  // persona-capital
+  courage:    '185346551726474941',  // persona-courage
+  connection: '185346591325947254',  // persona-connection
+  confidence: '185346573527418366',  // persona-confidence
+  centered:   null,                  // persona-centered — no separate slug group; Activated Architect routes via ML_GROUPS only
+};
+
+const ML_TIER_GROUPS = {
+  1: '185346416980264013',  // tier-1
+  2: '185346435701540541',  // tier-2
+  3: '185346453969831751',  // tier-3
+  4: '185346474574350300',  // tier-4
+};
+
+const ML_CO_LIMITING_GROUP   = '185346392866161811'; // co-limiting-active
+const ML_SCORECARD_COMPLETED = '185346372198728864'; // scorecard-completed
+
+const ML_API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiZTc4MjJhNjg1MmQ3OTZlOTUwZDQyM2QxMmJhNTY3MDZlOGMzMTUxMDdhMTNiNDZjNmIwNDVhYjE2OTFhMTU3OWVjZGE2MTEyMDI4ZjNjYTAiLCJpYXQiOjE3Nzc2MzY3MzcuOTcwMTYsIm5iZiI6MTc3NzYzNjczNy45NzAxNjMsImV4cCI6NDkzMzMxMDMzNy45NjIzODMsInN1YiI6IjIzMDEzNzYiLCJzY29wZXMiOltdfQ.LyHgbDpHCuwbK6YKBnIMqjKF_lAY_PbmC5wZxZKCQnRO1-57Z0-Pfc9warQqNgzgkmJ2sIaKloXzO_9oKl2LnJDcuLt3NtZcBNLOJurXfKRDNUVef6g_j-IwJDT458tI8emmdoqxdM5PQcWwjYtLheJ9601BiBRuj0o_Hv_TXmb0FmMLZM9O6NXUtcoNkRMYOfFZipNpnPfJiTHW_Wl5S_PNy1iCRISDFgeiSSkyZnNjJXvkymZh0peUvpwdh8yrPBRkJG4XtMr6gSn94_gYpMmf68V2IdFmvQKUH8s70796bF6UKnTrbgpRdMt_HOdUoxWBeiSO1Ixmn8-yK0vQ4lBl1Dkf-zbn-lLktbv6ynOXUIBOVeKOhqmCcA9_6_D-YAIMAdpS16Au6X5KN-ZRO_tixJgX6dgaQaLsC-4WP0vArKF7C2p2HVf-lifbusT_ngepItjpfm9xptPO3sfJmiKVCs29TzeNs99lKga1CjI48i1a5ZGUIiDR95rMRt4KK_sMChroOWSVE0npJsOdQfrfbto0DC1nl4wZuEXZJWWmU3SHY1GtlPnITr7_mGzsZFIwRmRZHnah86fOk9-GpMDJuzT5Z9ZDxrCuZfP0YLpFMiBLl2G6pC0-m43uCYKvhUYAJt9buBL799XmfRG6sVUBj0TgPrrKnRuMB-CgY2A'
+
+async function submitToMailerLite() {
+  const firstNameEl = document.getElementById('ml-firstname-input');
+  const emailEl     = document.getElementById('ml-email-input');
+  const statusEl    = document.getElementById('ml-status');
+  const btnEl       = document.getElementById('ml-submit-btn');
+
+  const firstName = firstNameEl ? firstNameEl.value.trim() : '';
+  const email     = emailEl ? emailEl.value.trim() : '';
+
+  // Validation
+  if (!firstName) {
+    statusEl.style.display = 'block';
+    statusEl.style.color   = 'var(--red-soft)';
+    statusEl.textContent   = 'Please enter your first name.';
+    firstNameEl.focus();
+    return;
+  }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    statusEl.style.display = 'block';
+    statusEl.style.color   = 'var(--red-soft)';
+    statusEl.textContent   = 'Please enter a valid email address.';
+    emailEl.focus();
+    return;
+  }
+
+  if (!window.SA_RESULT) {
+    statusEl.style.display = 'block';
+    statusEl.style.color   = 'var(--red-soft)';
+    statusEl.textContent   = 'Score data missing — please retake the Scorecard.';
+    return;
+  }
+
+  // Loading state
+  btnEl.disabled       = true;
+  btnEl.textContent    = 'Sending\u2026';
+  btnEl.style.opacity  = '0.7';
+  btnEl.style.cursor   = 'default';
+  statusEl.style.display = 'none';
+
+  const r = window.SA_RESULT;
+
+  // Build groups array — ONE primary persona group only (FIX 1)
+  const groups = [];
+
+  // 1. Named persona group (primary automation trigger)
+  const personaGroupId = ML_GROUPS[r.bottleneck] || ML_GROUPS['centered'];
+  if (personaGroupId) groups.push(personaGroupId);
+
+  // 2. Persona-slug group (primary only — NOT the co-limiting dim's slug)
+  const slugGroupId = ML_PERSONA_SLUG_GROUPS[r.bottleneck];
+  if (slugGroupId) groups.push(slugGroupId);
+
+  // 3. Tier group
+  const tierGroupId = ML_TIER_GROUPS[r.tierNum];
+  if (tierGroupId) groups.push(tierGroupId);
+
+  // 4. scorecard-completed (universal)
+  groups.push(ML_SCORECARD_COMPLETED);
+
+  // 5. co-limiting-active (only if secondary dim flagged)
+  if (r.coLimitingDim) groups.push(ML_CO_LIMITING_GROUP);
+
+  // FIX 2: first_name passed as standard subscriber field
+  const payload = {
+    email:      email,
+    first_name: firstName,
+    fields: {
+      persona:         r.personaName,
+      bottleneck:      r.bottleneck.toUpperCase(),
+      tier:            r.tier,
+      colimiting:      r.coLimitingLabel || 'None',
+      total_score:     String(r.totalPct),
+      potential_score: String(r.potentialPct),
+      gap_points:      String(r.gap),
+      radar_csv:       r.radarCSV,
+      clarity:         String(r.clarityPct),
+      capacity:        String(r.capacityPct),
+      capital:         String(r.capitalPct),
+      courage:         String(r.couragePct),
+      confidence:      String(r.confidencePct),
+      connection:      String(r.connectionPct),
+    },
+    groups: groups,
+  };
+
+  try {
+    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
+      method:  'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'Accept':        'application/json',
+        'Authorization': 'Bearer ' + ML_API_KEY,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      // FIX 3: Success message with spam/promotions folder caveat
+      btnEl.style.display    = 'none';
+      statusEl.style.display = 'block';
+      statusEl.style.color   = 'var(--green-border)';
+      statusEl.innerHTML     = `\u2713 You're in, ${firstName}. Your full analysis is on its way.<br><br>
+        <span style="color:var(--text-hint);font-size:12px;">
+          Please check your <strong style="color:var(--text-mid);">Promotions</strong> or <strong style="color:var(--text-mid);">Spam</strong> folder if you don't see it within a few minutes.
+          To make sure future emails reach you, move my message to your Primary inbox or add my address to your contacts.
+        </span>`;
+      // Hide form fields after success
+      if (firstNameEl) firstNameEl.style.display = 'none';
+      if (firstNameEl && firstNameEl.previousElementSibling) firstNameEl.previousElementSibling.style.display = 'none';
+      if (emailEl) emailEl.style.display = 'none';
+      if (emailEl && emailEl.previousElementSibling) emailEl.previousElementSibling.style.display = 'none';
+    } else {
+      // API error
+      btnEl.disabled      = false;
+      btnEl.textContent   = 'Send Me The Full Analysis \u2192';
+      btnEl.style.opacity = '1';
+      btnEl.style.cursor  = 'pointer';
+      const errMsg = data.message || 'Something went wrong. Please try again.';
+      statusEl.style.display = 'block';
+      statusEl.style.color   = 'var(--red-soft)';
+      statusEl.textContent   = errMsg;
+    }
+  } catch (err) {
+    // Network error
+    btnEl.disabled      = false;
+    btnEl.textContent   = 'Send Me The Full Analysis \u2192';
+    btnEl.style.opacity = '1';
+    btnEl.style.cursor  = 'pointer';
+    statusEl.style.display = 'block';
+    statusEl.style.color   = 'var(--red-soft)';
+    statusEl.textContent   = 'Network error — please check your connection and try again.';
+  }
+}
+
+// ── RENDER RESULTS ────────────────────────────────────────────────────────────
+function renderResults(pct, dimScores, bottleneck, tierLabel, potPct, gap, tierNum, stepIndex, coLimitingDim) {
+
+  document.getElementById('scoreNum').textContent = pct + '%';
+  // FIX 5: Show descriptive label only — no "Tier N" prefix
+  document.getElementById('tierLine').innerHTML = '<strong>' + tierLabel + '</strong>';
+  document.getElementById('gapCurrent').textContent   = pct + '%';
+  document.getElementById('gapPotential').textContent = potPct + '%';
+  document.getElementById('gapDiff').textContent      = gap + ' pts';
+
+  // Dimension bars
+  const barsEl = document.getElementById('dimBars');
+  barsEl.innerHTML = '<div class="results-label" style="margin-bottom:16px;">Your Six Dimensions</div>';
+  DIMENSIONS.forEach(dim => {
+    const dpct = Math.round((dimScores[dim.id] / 15) * 100);
+    const isBot = dim.id === bottleneck;
+    const row = document.createElement('div');
+    row.className = 'dim-bar-row';
+    row.innerHTML = `
+      <div class="dim-bar-label">${isBot ? '<span class="bottleneck-dot"></span>' : ''}${dim.label}</div>
+      <div class="dim-bar-track">
+        <div class="dim-bar-fill${isBot ? ' bottleneck' : ''}" data-pct="${dpct}" style="width:0%"></div>
+      </div>
+      <div class="dim-bar-pct">${dpct}%</div>
+    `;
+    barsEl.appendChild(row);
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.dim-bar-fill').forEach(el => el.style.width = el.dataset.pct + '%');
+  }, 80);
+
+  // Persona block
+  const persona = PERSONAS[bottleneck] || PERSONAS['centered'];
+  document.getElementById('personaBlock').innerHTML = `
+    <div class="persona-eyebrow">Your Second Act Profile${persona.isNew ? ' \u2014 New Persona' : ''}</div>
+    <div class="persona-name">${persona.name}</div>
+    <p style="font-size:13px;color:#888888;font-style:italic;margin-bottom:16px;">
+      Based on your answers today, your profile most closely matches this persona. This is a hypothesis, not a verdict.
+    </p>
+    <div class="persona-profile">${persona.profile}</div>
+    <div class="persona-diagnosis">${persona.diagnosis}</div>
+    <div class="persona-next-label">What This Means</div>
+    <div class="persona-next-text">${persona.next}</div>
+    <div class="persona-thinking">${persona.thinking}</div>
+  `;
+
+  // FIX 8: Transformation block — "Second Act Command. Control." section removed
+  const tierCopy = TIER_TRANSFORMATION[tierNum];
+  const loopLines = tierCopy.loopText.split('\n').map(l => `<div>${l}</div>`).join('');
+  document.getElementById('transformationBlock').innerHTML = `
+    <div class="transformation-heading">Where this leads if you follow it</div>
+    <div class="transformation-gap-line">
+      You are currently at <strong>${pct}%</strong>. Your potential shows <strong>${potPct}%</strong>.
+      That ${gap}-point gap is behavioral, not circumstantial.
+    </div>
+    <p class="transformation-gap-line">${tierCopy.intro}</p>
+    <div class="transformation-loop">${loopLines}</div>
+    <div class="transformation-break">${tierCopy.breakText}</div>
+    <div class="transformation-lines">
+      You stop guessing what comes next.<br>
+      You start building it.<br><br>
+      You stop waiting to feel ready.<br>
+      You act with what you already have.<br><br>
+      You stop carrying your First Act identity.<br>
+      You operate from your Second Act.
+    </div>
+    <div class="transformation-persona-shift">${persona.shift}</div>
+  `;
+
+  // First Move block
+  const firstMoveText = persona.steps[stepIndex] ? persona.steps[stepIndex].text : persona.steps[0].text;
+  const dimLabels = { clarity:'Clarity', capacity:'Capacity', capital:'Capital',
+    courage:'Courage', confidence:'Confidence', connection:'Connection' };
+  const coLimitNote = coLimitingDim ? `
+    <div class="note-amber">
+      <strong>One more thing your score revealed:</strong> Your ${dimLabels[coLimitingDim] || coLimitingDim} score was nearly as low as your primary bottleneck.
+      When two dimensions are that close, they are usually connected.
+      As you work through your primary constraint, watch for when this secondary one surfaces.
+      Sometimes the first constraint is the door; the second is the room behind it.
+    </div>` : '';
+
+  document.getElementById('firstMoveBlock').innerHTML = `
+    <div class="first-move-title">Your First Move</div>
+    <div class="first-move-text">${firstMoveText}</div>
+    ${coLimitNote}
+  `;
+}
+
+// ── RETAKE ────────────────────────────────────────────────────────────────────
+// FIX 6: Full CTA block reset — restores all inputs, labels, and button
+function retake() {
+  // Clear answers
+  Object.keys(answers).forEach(k => delete answers[k]);
+  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+  document.getElementById('errorMsg').style.display = 'none';
+
+  // Reset CTA block to its original state
+  const firstNameEl   = document.getElementById('ml-firstname-input');
+  const firstNameWrap = document.getElementById('ml-firstname-wrap');
+  const emailEl       = document.getElementById('ml-email-input');
+  const emailWrap     = document.getElementById('ml-email-wrap');
+  const submitRow     = document.getElementById('ml-submit-row');
+  const btnEl         = document.getElementById('ml-submit-btn');
+  const statusEl      = document.getElementById('ml-status');
+
+  if (firstNameEl)   { firstNameEl.value = ''; firstNameEl.style.display = ''; }
+  if (firstNameWrap) firstNameWrap.style.display = '';
+  if (emailEl)       { emailEl.value = ''; emailEl.style.display = ''; }
+  if (emailWrap)     emailWrap.style.display = '';
+  if (submitRow)     submitRow.style.display = '';
+  if (btnEl) {
+    btnEl.style.display  = '';
+    btnEl.disabled       = false;
+    btnEl.textContent    = 'Send Me The Full Analysis \u2192';
+    btnEl.style.opacity  = '1';
+    btnEl.style.cursor   = 'pointer';
+  }
+  if (statusEl) { statusEl.style.display = 'none'; statusEl.textContent = ''; }
+
+  // Show form, hide results
+  document.getElementById('formView').style.display = 'block';
+  document.getElementById('results').style.display  = 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+buildForm();
+</script>
+</body>
+</html>
