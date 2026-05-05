@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1242,8 +1241,8 @@ async function submitToMailerLite() {
   // FIX 2: first_name passed as standard subscriber field
   const payload = {
     email:      email,
-    first_name: firstName,
     fields: {
+      name:            firstName,
       persona:         r.personaName,
       bottleneck:      r.bottleneck.toUpperCase(),
       tier:            r.tier,
