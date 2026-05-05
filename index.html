@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -746,7 +747,7 @@
         <label for="ml-firstname-input" class="ml-label">
           First Name <span style="color: var(--amber);">*</span>
         </label>
-        <input type="text" id="ml-firstname-input" placeholder="" autocomplete="given-name" class="ml-input"
+        <input type="text" id="ml-firstname-input" placeholder="Your first name" autocomplete="given-name" class="ml-input"
                onkeydown="if(event.key==='Enter'){event.preventDefault();document.getElementById('ml-email-input').focus();}">
       </div>
 
@@ -755,7 +756,7 @@
         <label for="ml-email-input" class="ml-label">
           Email Address <span style="color: var(--amber);">*</span>
         </label>
-        <input type="email" id="ml-email-input" placeholder="" autocomplete="email" class="ml-input"
+        <input type="email" id="ml-email-input" placeholder="Your email address" autocomplete="email" class="ml-input"
                onkeydown="if(event.key==='Enter'){event.preventDefault();submitToMailerLite();}">
       </div>
 
@@ -1238,11 +1239,11 @@ async function submitToMailerLite() {
   // 5. co-limiting-active (only if secondary dim flagged)
   if (r.coLimitingDim) groups.push(ML_CO_LIMITING_GROUP);
 
-  // FIX 2: name passed inside fields object — hits built-in {$name} field in MailerLite
+  // FIX 2: first_name passed as standard subscriber field
   const payload = {
-    email:  email,
+    email:      email,
+    first_name: firstName,
     fields: {
-      name:            firstName,
       persona:         r.personaName,
       bottleneck:      r.bottleneck.toUpperCase(),
       tier:            r.tier,
