@@ -1,14 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/brand/favicon/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="assets/brand/favicon/favicon-apple-touch-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon/favicon-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon/favicon-512x512.png">
 <title>The Second Act Scorecard&#8482; | GenXplore | V12</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -674,7 +668,7 @@
 
     <!-- Discreet logo header -->
     <div class="micro-logo">
-      <img src="assets/brand/logo/web/logo-nav-transparent-96h.png" alt="GenXplore" style="height: 28px; width: auto;">
+      <img src="https://i.imgur.com/VlxwtOp.png" alt="Second Act Scorecard" style="height: 28px; width: auto;">
     </div>
 
     <h1 class="page-title">The Second Act Scorecard<sup style="font-size:0.55em;vertical-align:super;">&#8482;</sup></h1>
@@ -725,6 +719,9 @@
         <div><div class="gap-value" id="gapPotential">--</div><div class="gap-key">Potential Score</div></div>
         <div><div class="gap-value" id="gapDiff" style="color:var(--red-soft);">--</div><div class="gap-key">Your Gap</div></div>
       </div>
+      <p style="margin-top:16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;color:var(--text-muted);line-height:1.5;">
+        A high score here is not the goal. The Scorecard is designed to surface where the drag is, not grade your life. Most people who take this score between 55 and 80. A score above 80 means your bottleneck is narrow and specific. Below 60 means there is more than one dimension pulling at once. Either way, the dimension highlighted below is where the work starts.
+      </p>
     </div>
 
     <!-- Dimension bars -->
@@ -796,7 +793,7 @@
   <!-- Footer with logo (discreet) -->
   <div class="page-footer">
     <div class="footer-logo">
-      <img src="assets/brand/logo/web/logo-nav-transparent-96h.png" alt="GenXplore" style="height: 20px; width: auto;">
+      <img src="https://i.imgur.com/VlxwtOp.png" alt="Second Act Scorecard" style="height: 20px; width: auto;">
     </div>
     <div class="footer-text">
       <div>A GenXplore&#8482; instrument by Jasper Evangelista &nbsp;&middot;&nbsp; V12</div>
@@ -846,6 +843,7 @@ const LABELS = ["Strongly Disagree","Disagree","Neutral","Agree","Strongly Agree
 const PERSONAS = {
   clarity:{
     name:"The Drifting Achiever", bottleneck:"CLARITY",
+    calibration:"Drifting Achievers show up across a wide range. Some are deep in the drift — years into a life that feels foreign. Others are still functioning well but sense the direction is off. The pattern is the same at both ends; the intensity differs. Read what follows as the shape of your situation, not a verdict on how far in you are.",
     profile:"Successful on paper. Internally unclear. You have built a life -- but not necessarily one you chose intentionally.",
     diagnosis:"You are not failing. You are succeeding at the wrong thing. Your next move is not bigger -- it is more intentional.",
     next:"Your next step is not a leap. It is a pause long enough to decide what you actually want.",
@@ -860,6 +858,7 @@ const PERSONAS = {
   },
   capacity:{
     name:"The Caged Builder", bottleneck:"CAPACITY",
+    calibration:"Caged Builders show up across a wide range. Some are deep in the cage — exhausted, running on empty, resentful of the gap between what they are doing and what they know they could do. Others are still high-functioning and only just noticing the bars. The constraint is real either way. Read what follows for the pattern, not the severity.",
     profile:"Knows what they want. Feels trapped by time, energy, or responsibilities. Not lost -- constrained.",
     diagnosis:"You are not confused. You are overloaded. The job, the bills, the responsibilities are real. But so is the cost of staying.",
     next:"Reclaim capacity. One hour. One boundary. One decision that is for you.",
@@ -874,6 +873,7 @@ const PERSONAS = {
   },
   capital:{
     name:"The Caged Builder", bottleneck:"CAPITAL",
+    calibration:"Caged Builders show up across a wide range. Some are resource-constrained in ways that feel immovable. Others have more financial room than they think and are constrained mostly by the math they have not yet done. The pattern is the same at both ends. Read what follows for the shape of your situation, not a verdict on how tight things are.",
     profile:"Knows what they want. Feels constrained by financial reality. Not directionless -- resource-limited.",
     diagnosis:"You are not confused. The bills and responsibilities are real. But so is the cost of staying.",
     next:"Reclaim capacity. One hour. One boundary. One decision that is for you.",
@@ -888,6 +888,7 @@ const PERSONAS = {
   },
   courage:{
     name:"The Reluctant Rewriter", bottleneck:"COURAGE",
+    calibration:"Reluctant Rewriters show up across a wide range. Some have been circling the same decision for years. Others are newer to the hesitation and still surprised to find it there. Either way, the pattern is not a character flaw. It is a protection mechanism that made sense once and has outlived its usefulness. Read what follows as a description of the pattern, not a judgment on your resolve.",
     profile:"Has ideas. Has plans. Overthinks and does not execute. Ready but does not fully trust the timing.",
     diagnosis:"You have the ideas. You might even have the plan. Something keeps you circling instead of committing. It is self-protection.",
     next:"One small irreversible action. Not the whole leap. Just the first inch.",
@@ -902,6 +903,7 @@ const PERSONAS = {
   },
   confidence:{
     name:"The Stalled Strategist", bottleneck:"CONFIDENCE", isNew:true,
+    calibration:"Stalled Strategists show up across a wide range. Some have been underselling for decades and have built an entire professional identity around making themselves smaller than they are. Others are newer to the pattern and still catching themselves doing it. The gap between who you are and who you are willing to say you are is the thing. Read what follows for the shape of that gap.",
     profile:"Has the strategy. Has the skills. Cannot claim the authority. Competent in every room they enter -- and still waits for someone to tell them they belong there.",
     diagnosis:"You are not lost and you are not stuck. You are underselling. The gap is not between who you are and who you need to be. It is between who you are and who you are willing to say you are.",
     next:"Write the Authority Claim. One sentence. Present tense. No hedging. \"I am the person who ___\". Say it out loud before you type it anywhere.",
@@ -916,6 +918,7 @@ const PERSONAS = {
   },
   connection:{
     name:"The Rising Reinventor", bottleneck:"CONNECTION",
+    calibration:"Rising Reinventors show up across a wide range. Some are months into real momentum with no crew around them. Others are earlier and still building the confidence to move at all. What they share is the recognition that the next stage requires a different room than the one they are currently in. Read what follows as the pattern, not a measure of how far you have already come.",
     profile:"Already taking steps. Lacks the community, mentorship, or peer environment to sustain momentum.",
     diagnosis:"You have started moving -- that is more than most. But momentum without structure eventually burns out.",
     next:"Find your crew. People who are building, not just talking about it.",
@@ -930,6 +933,7 @@ const PERSONAS = {
   },
   centered:{
     name:"The Activated Architect", bottleneck:"CENTERED",
+    calibration:"Activated Architects are not a homogeneous group. Some are already mid-build on something meaningful. Others have the clarity, the resources, and the readiness but have not yet committed to a structure. What they share is that the internal work is largely done. The question now is execution. Read what follows as the frame for that next stage.",
     profile:"Clear, capable, resourced, brave, confident, and connected. Needs an execution framework and scale.",
     diagnosis:"You are not figuring it out -- you are building it. This is execution territory.",
     next:"Commit to a structured build. Not more exploration -- construction.",
@@ -1247,8 +1251,8 @@ async function submitToMailerLite() {
   // FIX 2: first_name passed as standard subscriber field
   const payload = {
     email:      email,
+    first_name: firstName,
     fields: {
-      name:            firstName,
       persona:         r.personaName,
       bottleneck:      r.bottleneck.toUpperCase(),
       tier:            r.tier,
@@ -1330,7 +1334,7 @@ function renderResults(pct, dimScores, bottleneck, tierLabel, potPct, gap, tierN
 
   // Dimension bars
   const barsEl = document.getElementById('dimBars');
-  barsEl.innerHTML = '<div class="results-label" style="margin-bottom:16px;">Your Six Dimensions</div>';
+  barsEl.innerHTML = '<div class="results-label" style="margin-bottom:8px;">Your Six Dimensions</div><p style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',sans-serif;font-size:12px;color:var(--text-muted);margin-bottom:16px;line-height:1.4;">The highlighted dimension is your primary lever — the one where focused work moves everything else. The others are context. This one is the starting point.</p>';
   DIMENSIONS.forEach(dim => {
     const dpct = Math.round((dimScores[dim.id] / 15) * 100);
     const isBot = dim.id === bottleneck;
@@ -1354,8 +1358,8 @@ function renderResults(pct, dimScores, bottleneck, tierLabel, potPct, gap, tierN
   document.getElementById('personaBlock').innerHTML = `
     <div class="persona-eyebrow">Your Second Act Profile${persona.isNew ? ' \u2014 New Persona' : ''}</div>
     <div class="persona-name">${persona.name}</div>
-    <p style="font-size:13px;color:#888888;font-style:italic;margin-bottom:16px;">
-      Based on your answers today, your profile most closely matches this persona. This is a hypothesis, not a verdict.
+    <p style="font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:12px;line-height:1.5;">
+      ${persona.calibration}
     </p>
     <div class="persona-profile">${persona.profile}</div>
     <div class="persona-diagnosis">${persona.diagnosis}</div>
@@ -1370,8 +1374,9 @@ function renderResults(pct, dimScores, bottleneck, tierLabel, potPct, gap, tierN
   document.getElementById('transformationBlock').innerHTML = `
     <div class="transformation-heading">Where this leads if you follow it</div>
     <div class="transformation-gap-line">
-      You are currently at <strong>${pct}%</strong>. Your potential shows <strong>${potPct}%</strong>.
-      That ${gap}-point gap is behavioral, not circumstantial.
+      You are currently at <strong>${pct}%</strong>. Your potential score of <strong>${potPct}%</strong> reflects what becomes available when your primary dimension is no longer drag.
+      That ${gap}-point gap is not a grade. It is the distance between where you are operating now and where you could be operating with one targeted shift.
+      The gap is behavioral, not circumstantial.
     </div>
     <p class="transformation-gap-line">${tierCopy.intro}</p>
     <div class="transformation-loop">${loopLines}</div>
