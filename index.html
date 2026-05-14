@@ -1248,11 +1248,11 @@ async function submitToMailerLite() {
   // 5. co-limiting-active (only if secondary dim flagged)
   if (r.coLimitingDim) groups.push(ML_CO_LIMITING_GROUP);
 
-  // FIX 2: first_name passed as standard subscriber field
+  // FIX 2: first_name passed inside fields to correctly populate MailerLite built-in Name field
   const payload = {
     email:      email,
-    first_name: firstName,
     fields: {
+      name:            firstName,
       persona:         r.personaName,
       bottleneck:      r.bottleneck.toUpperCase(),
       tier:            r.tier,
